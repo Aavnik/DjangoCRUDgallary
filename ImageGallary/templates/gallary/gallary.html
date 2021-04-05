@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallary</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'crud/waali.png' %}" type="image/x-icon">
+
+    <link rel="stylesheet" href="{% static 'crud/css/bootstrap.min.css' %}">
+
+    <style>
+        .image-thumbnail{
+            height: 200px;
+            object-fit: cover;
+        }
+        .liks{
+            color:black;
+            text-decoration: none;
+        }
+        .liks:hover {
+             color: rgb(245, 149, 60);
+        }
+    </style>
+</head>
+
+<body class="m-5">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header">
+                       <h2>Gallary</h2>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><a class="liks" href="{% url 'gallary'%}">
+                            
+                           <h4>All Categories</h4></a></li>
+
+                        {% for category in cata %}
+
+                        <li class="list-group-item">
+                           <h5> <a class="liks" href="{% url 'gallary'%}?category={{category.name}}">{{category.name}}</li>
+                        {% endfor %}
+
+                    </ul>
+                   <a href="{% url 'addphotos' %}" class="btn btn-dark btn-lg m-2">Add Photos</a>
+                </div>
+
+            </div>
+
+            <div class="col-md-9">
+                <div class="row">
+                    {% for imgs in poths %}
+                    <div class="col-md-4">
+                        <div class="card m-2">
+                            <img class="image-thumbnail" src="{{imgs.image.url}}"
+                                alt="">
+                            <div class="card-body">
+                               <h5 class="card-text">Categories - {{imgs.Category.name}}</h5>
+
+                            </div>
+                            <a  href="{% url 'photov' imgs.id %}"   class="btn btn-outline-dark btn-lg m-1">View Photo</a>
+                            <a  href="{% url 'deletev' imgs.id %}"   class="btn btn-outline-dark btn-lg m-1">delete</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="{% static 'crud/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'crud/js/jQuery.js'%}"></script>
+    <script src="{% static 'crud/js/propper.js'%}"></script>
+</body>
+
+</html>

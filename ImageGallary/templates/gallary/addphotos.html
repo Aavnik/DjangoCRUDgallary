@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Photos</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'crud/wall.png' %}"/>
+
+    <link rel="stylesheet" href="{% static 'crud/css/bootstrap.min.css' %}">
+</head>
+
+<body class="m-5">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <a href="{% url 'gallary' %}" class="btn btn-dark btn-lg m-2">Back</a>
+            <div class="card">
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group m-3">
+                        <label>Discription</label>
+                        <input type="text" class="form-control" name="description">
+
+                    </div>
+                    <div class="form-group m-3">
+                        <label>Select Category</label>
+                        <select name="category" class="form-control">
+                        <option value="none">Select a Categories</option>
+                        {% for cato in cata %}
+                        <option value="{{cato.id}}">{{cato.name}}</option>
+                        {% endfor %}
+                            
+                        </select>
+
+                    </div>
+                    <div class="form-group m-3">
+                        <label>Create New Category</label>
+                        <input name="Category_new" type="text" class="form-control">
+
+                    </div>
+                    <div class="form-group m-3">
+                        <label>Upload a File</label><br>
+                        <input type="file" class="form-control-file" name="image">
+
+                    </div>
+                    <button type="submit" class="btn btn-dark btn-lg m-4">Submit</button>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+   
+
+   
+
+
+    <script src="{% static 'crud/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'crud/js/jQuery.js'%}"></script>
+    <script src="{% static 'crud/js/propper.js'%}"></script>
+</body>
+
+</html>
