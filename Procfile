@@ -1,0 +1,1 @@
+web: gunicorn djgallary,wsgi --log-file
