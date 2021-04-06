@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 't0(mam$2*jyb0wredz!2kd@9_yi9a!owm95az2@fjxz)noh=sb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -53,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'djgallary.urls'
@@ -126,6 +127,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/images/'
 STATIC_ROOT = 'staticfiles'
-
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static/'), ]
 
 MEDIA_ROOT = BASE_DIR / 'static/images'
