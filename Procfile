@@ -1,1 +1,1 @@
-web: gunicorn djgallary,wsgi --log-file
+web: gunicorn djgallary.wsgi --log-file
